@@ -128,7 +128,7 @@ const DATA = {
 };
 
 // ══════════════════════════════════════════════════════════
-//  CSS — DARK THEME (unchanged)
+//  CSS — DARK THEME + FULL MOBILE RESPONSIVE
 // ══════════════════════════════════════════════════════════
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -212,7 +212,7 @@ body.hovering #cur-ring{width:58px;height:58px;border-color:rgba(14,165,233,.6)}
 .skill-card.skill-3d .skill-name{color:var(--neon)}
 .skill-card.skill-3d .stag{background:rgba(14,165,233,.1);border-color:rgba(14,165,233,.28);color:var(--accent)}
 .skill-cat{display:flex;align-items:center;gap:.85rem;margin-bottom:1.2rem}
-.skill-icon{width:40px;height:40px;border-radius:9px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.skill-icon{width:40px;height:40px;border-radius:9px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .skill-name{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
 .skill-tags{display:flex;flex-wrap:wrap;gap:.45rem}
 .stag{padding:.26rem .72rem;background:rgba(14,165,233,.06);border:1px solid var(--border);border-radius:5px;font-size:.74rem;font-weight:500;color:var(--ink2);transition:all .2s;cursor:default}
@@ -267,9 +267,9 @@ body.hovering #cur-ring{width:58px;height:58px;border-color:rgba(14,165,233,.6)}
 .cert-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--neon));transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .cert-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:var(--sh2)}
 .cert-card:hover::before{transform:scaleX(1)}
-.cert-top{display:flex;align-items:center;justify-content:space-between}
-.cert-icon{width:46px;height:46px;border-radius:11px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.35rem}
-.cert-badge{padding:.28rem .8rem;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#fff;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 0 12px rgba(14,165,233,.28)}
+.cert-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.cert-icon{width:46px;height:46px;border-radius:11px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.cert-badge{padding:.28rem .8rem;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#fff;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 0 12px rgba(14,165,233,.28);white-space:nowrap}
 .cert-name{font-size:1rem;font-weight:700;color:var(--ink);line-height:1.3}
 .cert-by{font-size:.74rem;color:var(--muted)}
 .cert-desc{font-size:.86rem;line-height:1.85;color:var(--ink2)}
@@ -303,7 +303,7 @@ body.hovering #cur-ring{width:58px;height:58px;border-color:rgba(14,165,233,.6)}
 .clink-icon{width:42px;height:42px;border-radius:9px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
 .clink-lbl{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.13rem}
 .clink-val{font-size:.9rem;font-weight:600;color:var(--ink)}
-.clink-arr{margin-left:auto;color:var(--muted);transition:transform .2s,color .2s}
+.clink-arr{margin-left:auto;color:var(--muted);transition:transform .2s,color .2s;flex-shrink:0}
 .clink:hover .clink-arr{transform:translateX(5px);color:var(--accent)}
 
 /* ── TICKER ── */
@@ -328,29 +328,175 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .ft-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600;letter-spacing:.12em;background:linear-gradient(135deg,var(--accent),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .ft-copy{font-size:.7rem;color:var(--muted);letter-spacing:.1em}
 
-/* ── RESPONSIVE ── */
+/* ══════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+══════════════════════════════════════════════ */
+
+/* ── 1100px ── */
 @media(max-width:1100px){
-  .layout{grid-template-columns:310px 1fr}
-  .sidebar{padding:3rem 2.2rem}
+  .layout{grid-template-columns:300px 1fr}
+  .sidebar{padding:3rem 2rem}
   .main{padding:0 2.5rem 5rem}
   .contact-split{grid-template-columns:1fr}
   .cert-grid{grid-template-columns:1fr 1fr}
+  .sb-name{font-size:clamp(2rem,3vw,2.8rem)}
 }
+
+/* ── 820px: Tablet — single column ── */
 @media(max-width:820px){
+  body{cursor:auto!important}
+  #cur,#cur-ring{display:none}
+
   .layout{grid-template-columns:1fr}
-  .sidebar{position:relative;height:auto;padding:5rem 2rem 2rem}
+
+  .sidebar{
+    position:relative;
+    height:auto;
+    padding:3.5rem 1.8rem 2rem;
+    border-bottom:1px solid var(--border);
+  }
   .sidebar::after{display:none}
+  .sb-top{overflow:visible}
   .sb-nav{display:none}
-  .main{padding:0 2rem 4rem}
+  .sb-name{font-size:clamp(2.6rem,8vw,3.8rem);margin-bottom:.5rem}
+  .sb-tagline{max-width:100%;margin-bottom:1.6rem}
+
+  .main{padding:0 1.8rem 4rem}
+  .sec{padding:4rem 0}
+  .sec-title{font-size:clamp(1.8rem,6vw,2.6rem);margin-bottom:1.8rem}
+
   .stats-row{grid-template-columns:1fr 1fr}
-  .skills-grid,.cert-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+
+  .exp-header{flex-direction:column;gap:.8rem}
+  .exp-meta{flex-direction:row;align-items:center;width:100%;justify-content:space-between}
+  .exp-loc{text-align:left}
+
+  .proj-card{grid-template-columns:1fr 48px;gap:1rem;padding:1.4rem}
+  .proj-num{display:none}
+  .proj-links{flex-direction:row;justify-content:flex-end;align-items:flex-start;gap:.5rem}
+
   .edu-card{grid-template-columns:1fr}
-  .edu-stat{padding:2rem;min-height:120px}
-  footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem}
+  .edu-stat{padding:2rem;min-height:110px}
+  .edu-num{font-size:3.5rem}
+
+  .contact-split{grid-template-columns:1fr;gap:2rem}
+  .contact-head{font-size:clamp(1.8rem,5.5vw,2.5rem)}
+
+  footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 1.8rem}
 }
-@media(max-width:520px){
-  .proj-card{grid-template-columns:auto 1fr}
-  .proj-links{grid-column:span 2;flex-direction:row;justify-content:flex-start}
+
+/* ── 600px: Large mobile ── */
+@media(max-width:600px){
+  .sidebar{padding:2.8rem 1.2rem 1.8rem}
+  .sb-name{font-size:clamp(2.4rem,9vw,3.2rem)}
+  .sb-status{font-size:.68rem;padding:.32rem .85rem}
+  .sb-socials{gap:.65rem}
+  .sb-soc{width:38px;height:38px;font-size:.88rem}
+
+  .main{padding:0 1.2rem 3.5rem}
+  .sec{padding:3rem 0}
+  .sec-title{font-size:clamp(1.6rem,7vw,2.2rem);margin-bottom:1.4rem}
+  .sec-label{font-size:.65rem}
+
+  .about-text{font-size:.96rem;line-height:1.85}
+  .about-btns{gap:.75rem}
+  .cta-main,.cta-ghost{padding:.7rem 1.3rem;font-size:.8rem;width:100%;justify-content:center}
+
+  .stat{padding:1.2rem .8rem}
+  .stat-val{font-size:1.6rem}
+  .stat-lbl{font-size:.62rem}
+
+  .skill-card{padding:1.3rem}
+  .stag{font-size:.7rem;padding:.22rem .6rem}
+
+  .exp-header{padding:1.3rem 1.3rem .8rem}
+  .exp-body{padding:.4rem 1.3rem 1.3rem}
+  .exp-company{font-size:1.05rem}
+  .exp-bullets li{font-size:.9rem;line-height:1.75}
+
+  .proj-card{grid-template-columns:1fr;padding:1.3rem}
+  .proj-links{flex-direction:row;gap:.5rem;margin-top:.5rem}
+  .proj-card:hover{transform:none}
+  .proj-name{font-size:1rem}
+  .proj-desc{font-size:.88rem}
+
+  .cert-card{padding:1.3rem}
+  .cert-name{font-size:.95rem}
+  .cert-desc{font-size:.82rem}
+
+  .edu-body{padding:1.5rem}
+  .edu-degree{font-size:1.2rem}
+  .edu-stat{min-height:90px}
+  .edu-num{font-size:3rem}
+
+  .clink{padding:.9rem 1rem;gap:.85rem}
+  .clink-val{font-size:.82rem;word-break:break-all}
+  .clink-icon{width:38px;height:38px;font-size:.95rem}
+  .contact-head{font-size:clamp(1.6rem,6.5vw,2.2rem)}
+
+  footer{padding:1.2rem 1.2rem}
+  .ft-name{font-size:.72rem;letter-spacing:.08em}
+  .ft-copy{font-size:.64rem}
+}
+
+/* ── 420px: Small mobile ── */
+@media(max-width:420px){
+  .sidebar{padding:2.2rem 1rem 1.5rem}
+  .sb-name{font-size:clamp(2rem,10vw,2.8rem)}
+  .sb-role{font-size:.72rem;letter-spacing:.12em}
+
+  .main{padding:0 1rem 3rem}
+  .sec{padding:2.5rem 0}
+  .sec-title{font-size:clamp(1.5rem,8vw,2rem);margin-bottom:1.2rem}
+
+  .stat{padding:1rem .6rem}
+  .stat-val{font-size:1.4rem}
+  .stat-lbl{font-size:.58rem;letter-spacing:.06em}
+
+  .cta-main,.cta-ghost{padding:.65rem 1.1rem;font-size:.76rem}
+
+  .exp-header{padding:1.1rem 1.1rem .7rem}
+  .exp-body{padding:.3rem 1.1rem 1.1rem}
+  .exp-company{font-size:1rem}
+  .exp-bullets li{font-size:.86rem}
+  .exp-badge{font-size:.6rem;padding:.2rem .6rem}
+
+  .cert-card{padding:1.1rem;gap:.7rem}
+  .cert-icon{width:40px;height:40px;font-size:1.1rem}
+  .cert-name{font-size:.9rem}
+
+  .proj-card{padding:1.1rem}
+  .proj-tags{gap:.3rem}
+  .ptag{font-size:.65rem;padding:.18rem .5rem}
+
+  .edu-body{padding:1.2rem}
+  .edu-degree{font-size:1.1rem}
+  .edu-field{font-size:.95rem}
+  .edu-num{font-size:2.6rem}
+  .edu-chips{gap:.5rem}
+  .edu-chip{font-size:.68rem;padding:.32rem .75rem}
+
+  .clink{padding:.8rem .9rem;gap:.7rem}
+  .clink-val{font-size:.78rem}
+  .clink-icon{width:34px;height:34px;font-size:.88rem}
+  .contact-head{font-size:clamp(1.4rem,7vw,1.9rem)}
+
+  footer{padding:1rem}
+  .ft-name{font-size:.65rem}
+  .ft-copy{font-size:.6rem}
+}
+
+/* ── Touch devices: disable hover transforms ── */
+@media(hover:none){
+  .skill-card:hover,.proj-card:hover,.cert-card:hover,.exp-card:hover,.edu-card:hover{
+    transform:none!important;box-shadow:none
+  }
+  .cta-main:hover,.cta-ghost:hover{transform:none!important}
+  .clink:hover{transform:none!important}
+  .stag:hover{transform:none!important}
+  .sb-soc:hover{transform:none!important}
 }
 `;
 
@@ -367,15 +513,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about");
   const [ready, setReady] = useState(false);
 
-  // ══════════════════════════════════════════════════════
-  //  FIX 1 — Robust sequential CDN loader with polling
-  //  • Checks window.THREE/gsap directly (not just script tag)
-  //  • Retries once on network error
-  //  • Polls every 50 ms until libs are truly assigned
-  //  • 5-second safety timeout so UI never hangs
-  // ══════════════════════════════════════════════════════
   useEffect(() => {
-    // Already available from a previous navigation? Skip loading.
     if (window.THREE && window.gsap && window.ScrollTrigger) {
       setReady(true);
       return;
@@ -383,7 +521,6 @@ export default function Portfolio() {
 
     const loadScript = (src) =>
       new Promise((resolve) => {
-        // If the tag already exists, just poll for the global
         if (document.querySelector(`script[src="${src}"]`)) {
           const poll = setInterval(() => {
             const ok = src.includes("three")          ? !!window.THREE
@@ -394,68 +531,45 @@ export default function Portfolio() {
           setTimeout(() => { clearInterval(poll); resolve(); }, 5000);
           return;
         }
-
         const s = document.createElement("script");
-        s.src = src;
-        s.async = true;
-        s.crossOrigin = "anonymous";
+        s.src = src; s.async = true; s.crossOrigin = "anonymous";
         s.onload = () => resolve();
         s.onerror = () => {
-          // Single retry
           const r = document.createElement("script");
           r.src = src; r.async = true; r.crossOrigin = "anonymous";
           r.onload = () => resolve();
-          r.onerror = () => resolve(); // give up gracefully
+          r.onerror = () => resolve();
           document.head.appendChild(r);
         };
         document.head.appendChild(s);
       });
 
-    // Sequential load: Three → GSAP → ScrollTrigger
     loadScript("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js")
       .then(() => loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"))
       .then(() => loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"))
       .then(() => {
-        // Poll until globals are actually assigned on window
         let attempts = 0;
         const check = setInterval(() => {
           attempts++;
-          if (window.THREE && window.gsap) {
-            clearInterval(check);
-            setReady(true);
-          }
+          if (window.THREE && window.gsap) { clearInterval(check); setReady(true); }
           if (attempts > 100) { clearInterval(check); setReady(true); }
         }, 50);
       });
   }, []);
 
-  // ══════════════════════════════════════════════════════
-  //  FIX 2 — Three.js scene
-  //  • Canvas null guard
-  //  • Explicit transparent clear colour
-  //  • isRunning flag so cleanup is instant
-  //  • visibilitychange listener resumes loop on tab focus
-  // ══════════════════════════════════════════════════════
   useEffect(() => {
     if (!ready || !window.THREE) return;
-
     const canvas = canvasRef.current;
-    if (!canvas) return; // guard: canvas must be mounted
-
+    if (!canvas) return;
     const THREE = window.THREE;
-
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0); // explicit transparent background
-
+    renderer.setClearColor(0x000000, 0);
     const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      55, window.innerWidth / window.innerHeight, 0.1, 800
-    );
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 800);
     camera.position.z = 30;
 
-    // ── Model helper
     const addModel = (geo, hex, pos, wOp = 0.14, sOp = 0.04) => {
       const g = new THREE.Group();
       g.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: hex, transparent: true, opacity: sOp })));
@@ -473,12 +587,10 @@ export default function Portfolio() {
       addModel(new THREE.DodecahedronGeometry(2.2, 0),       0x3b82f6, [3, -7, -4],    0.15, 0.04),
       addModel(new THREE.TorusKnotGeometry(2.5, 0.55, 100, 16), 0x0ea5e9, [-11, 5, -14], 0.10, 0.02),
     ];
+    const initPos   = models.map(m => ({ x: m.position.x, y: m.position.y, z: m.position.z }));
+    const rotSpeeds = [0.22, 0.18, 0.28, 0.32, 0.20, 0.13];
+    const bobSpeeds = [0.50, 0.45, 0.60, 0.55, 0.40, 0.35];
 
-    const initPos    = models.map(m => ({ x: m.position.x, y: m.position.y, z: m.position.z }));
-    const rotSpeeds  = [0.22, 0.18, 0.28, 0.32, 0.20, 0.13];
-    const bobSpeeds  = [0.50, 0.45, 0.60, 0.55, 0.40, 0.35];
-
-    // ── Particles
     const N = 350;
     const ppos = new Float32Array(N * 3);
     const pcol = new Float32Array(N * 3);
@@ -493,12 +605,9 @@ export default function Portfolio() {
     const pgeo = new THREE.BufferGeometry();
     pgeo.setAttribute("position", new THREE.BufferAttribute(ppos, 3));
     pgeo.setAttribute("color",    new THREE.BufferAttribute(pcol, 3));
-    const pts = new THREE.Points(pgeo, new THREE.PointsMaterial({
-      size: 0.28, vertexColors: true, transparent: true, opacity: 0.6, sizeAttenuation: true,
-    }));
+    const pts = new THREE.Points(pgeo, new THREE.PointsMaterial({ size: 0.28, vertexColors: true, transparent: true, opacity: 0.6, sizeAttenuation: true }));
     scene.add(pts);
 
-    // ── Connection lines
     const lm = new THREE.LineBasicMaterial({ color: 0x0ea5e9, transparent: true, opacity: 0.045 });
     for (let i = 0; i < 60; i++) {
       const x = (Math.random() - 0.5) * 85;
@@ -510,70 +619,41 @@ export default function Portfolio() {
       scene.add(new THREE.Line(lg, lm));
     }
 
-    // ── Scroll-reactive rings (fade in as you scroll)
-    const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(8, 0.06, 8, 80),
-      new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0 })
-    );
-    ring.rotation.x = Math.PI / 2.5;
-    ring.position.set(0, 0, -12);
-    scene.add(ring);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(8, 0.06, 8, 80), new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0 }));
+    ring.rotation.x = Math.PI / 2.5; ring.position.set(0, 0, -12); scene.add(ring);
+    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(12, 0.04, 8, 100), new THREE.MeshBasicMaterial({ color: 0x0ea5e9, transparent: true, opacity: 0 }));
+    ring2.rotation.x = -Math.PI / 3; ring2.position.set(0, 0, -18); scene.add(ring2);
 
-    const ring2 = new THREE.Mesh(
-      new THREE.TorusGeometry(12, 0.04, 8, 100),
-      new THREE.MeshBasicMaterial({ color: 0x0ea5e9, transparent: true, opacity: 0 })
-    );
-    ring2.rotation.x = -Math.PI / 3;
-    ring2.position.set(0, 0, -18);
-    scene.add(ring2);
-
-    // ── Mouse & scroll handlers
     let mx = 0, my = 0;
-    const onM = e => {
-      mx = (e.clientX / window.innerWidth  - 0.5) * 2;
-      my = (e.clientY / window.innerHeight - 0.5) * 2;
-    };
+    const onM = e => { mx = (e.clientX / window.innerWidth - 0.5) * 2; my = (e.clientY / window.innerHeight - 0.5) * 2; };
     const onS = () => { scrollYRef.current = window.scrollY; };
-    const onR = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+    const onR = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
     window.addEventListener("mousemove", onM);
     window.addEventListener("scroll",    onS);
     window.addEventListener("resize",    onR);
 
-    // ── Animation loop
     const clock = new THREE.Clock();
-    let raf = null;
-    let isRunning = true;
+    let raf = null, isRunning = true;
 
     const loop = () => {
       if (!isRunning) return;
       raf = requestAnimationFrame(loop);
-
-      const t   = clock.getElapsedTime();
-      const sy  = scrollYRef.current;
-      const doc = document.documentElement.scrollHeight - window.innerHeight || 1;
-      const sf  = sy / doc;       // 0 → 1 over full page
-      const sn  = sy / 1000;      // raw scroll units
+      const t  = clock.getElapsedTime();
+      const sy = scrollYRef.current;
+      const sf = sy / (document.documentElement.scrollHeight - window.innerHeight || 1);
+      const sn = sy / 1000;
 
       models.forEach((m, i) => {
         m.rotation.y += rotSpeeds[i] * 0.016;
         m.rotation.x += rotSpeeds[i] * 0.009;
         m.position.y  = initPos[i].y + Math.sin(t * bobSpeeds[i] + i) * 0.9;
-
         const angle  = sn * (i % 2 === 0 ? 1 : -1) * 0.35 + (i * Math.PI * 2 / models.length);
         const radius = 1.5 + sf * 4;
         m.position.x = initPos[i].x + Math.cos(angle) * radius * 0.6;
         m.position.z = initPos[i].z + Math.sin(angle) * radius * 0.4;
         m.rotation.z = sn * rotSpeeds[i] * 0.5;
-
         m.children.forEach(child => {
-          if (child.material) {
-            const base = child.material.wireframe ? 0.14 : 0.04;
-            child.material.opacity = base + sf * 0.08;
-          }
+          if (child.material) { const base = child.material.wireframe ? 0.14 : 0.04; child.material.opacity = base + sf * 0.08; }
         });
       });
 
@@ -591,21 +671,14 @@ export default function Portfolio() {
       camera.position.x += (mx * 1.6 - camera.position.x) * 0.025;
       camera.position.y += (-my * 1.6 - camera.position.y) * 0.025;
       camera.position.z  = 30 - sy * 0.008;
-
       renderer.render(scene, camera);
     };
 
-    // FIX 3 — Resume loop when tab becomes visible again
     const onVisibility = () => {
-      if (document.visibilityState === "visible" && isRunning) {
-        cancelAnimationFrame(raf);
-        clock.start();
-        loop();
-      }
+      if (document.visibilityState === "visible" && isRunning) { cancelAnimationFrame(raf); clock.start(); loop(); }
     };
     document.addEventListener("visibilitychange", onVisibility);
-
-    loop(); // kick off
+    loop();
 
     return () => {
       isRunning = false;
@@ -618,7 +691,6 @@ export default function Portfolio() {
     };
   }, [ready]);
 
-  // ── Smooth cursor ─────────────────────────────────────
   useEffect(() => {
     const onMove = e => { cx.current = e.clientX; cy.current = e.clientY; };
     window.addEventListener("mousemove", onMove);
@@ -634,7 +706,6 @@ export default function Portfolio() {
     return () => { window.removeEventListener("mousemove", onMove); cancelAnimationFrame(raf); };
   }, []);
 
-  // ── GSAP + scroll active-nav ──────────────────────────
   useEffect(() => {
     if (!ready) return;
     const tid = setTimeout(() => {
@@ -688,7 +759,6 @@ export default function Portfolio() {
   const hi = () => document.body.classList.add("hovering");
   const ho = () => document.body.classList.remove("hovering");
 
-  // ════════════════════════════════════════════════════════
   return (
     <>
       <style>{CSS}</style>
@@ -696,7 +766,6 @@ export default function Portfolio() {
       <div ref={curRef}  id="cur" />
       <div ref={ringRef} id="cur-ring" />
 
-      {/* TICKER */}
       <div className="ticker-wrap">
         <div className="ticker-track">
           {[...DATA.ticker, ...DATA.ticker].map((t, i) => (
@@ -705,10 +774,7 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* ══ LAYOUT ══ */}
       <div className="layout">
-
-        {/* ─── SIDEBAR ─── */}
         <aside className="sidebar">
           <div className="sb-top">
             <div className="sb-status"><span className="sb-dot" />Available for work</div>
@@ -744,10 +810,7 @@ export default function Portfolio() {
           </div>
         </aside>
 
-        {/* ─── MAIN ─── */}
         <main className="main">
-
-          {/* ABOUT */}
           <section className="sec" id="about" data-sec="about">
             <div className="sec-label">Introduction</div>
             <h1 className="sec-title">About Me</h1>
@@ -766,7 +829,6 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* SKILLS */}
           <section className="sec" id="skills" data-sec="skills">
             <div className="sec-label">Technical Stack</div>
             <h2 className="sec-title">Skills</h2>
@@ -785,7 +847,6 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* EXPERIENCE */}
           <section className="sec" id="experience" data-sec="experience">
             <div className="sec-label">Career Journey</div>
             <h2 className="sec-title">Work Experience</h2>
@@ -823,7 +884,6 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* PROJECTS */}
           <section className="sec" id="projects" data-sec="projects">
             <div className="sec-label">Featured Work</div>
             <h2 className="sec-title">Key Projects</h2>
@@ -854,7 +914,6 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* CERTIFICATIONS */}
           <section className="sec" id="certifications" data-sec="certifications">
             <div className="sec-label">Credentials</div>
             <h2 className="sec-title">Certifications</h2>
@@ -877,7 +936,6 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* EDUCATION */}
           <section className="sec" id="education" data-sec="education">
             <div className="sec-label">Academic Background</div>
             <h2 className="sec-title">Education</h2>
@@ -898,7 +956,6 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* CONTACT */}
           <section className="sec" id="contact" data-sec="contact">
             <div className="sec-label">Let's Connect</div>
             <h2 className="sec-title">Get In Touch</h2>
@@ -931,11 +988,9 @@ export default function Portfolio() {
               </div>
             </div>
           </section>
-
         </main>
       </div>
 
-      {/* FOOTER */}
       <footer>
         <div className="ft-name">ROHIT RATHAUR · FRONTEND DEVELOPER</div>
         <div className="ft-copy">© 2026 · GREATER NOIDA, INDIA · IBM CERTIFIED</div>
