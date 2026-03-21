@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+ .custom-dots-slider .slick-dots {
+    bottom: -40px; /* Adjust position if needed */
+  }
+  .custom-dots-slider .slick-dots li {
+    width: 20px;
+    height: 20px;
+    margin: 0 8px;
+  }
+  .custom-dots-slider .slick-dots li button {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+  }
+  .custom-dots-slider .slick-dots li button:before {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: #00D084;
+    opacity: 0.5;
+  }
+  .custom-dots-slider .slick-dots li.slick-active button:before {
+    color: #00D084;
+    opacity: 1;
+  }
+
+  /*  */
+  /* Fix horizontal scroll on mobile */
+.slick-list {
+  margin: 0 -5px !important; /* Reduce negative margin */
+}
+
+.slick-slide > div {
+  padding: 0 5px; /* Add matching padding */
+}
+
+/* Contain all sliders */
+.slick-slider {
+  /* If Mobile have horizontal scroll.. then UnComment the below code ...hides the dots of carousal */
+  /* overflow: hidden;    */
+  position: relative;
+}
+
+
+/* Slider Dots */
+/* Default styles (for desktop) */
+.slick-prev:before, 
+.slick-next:before {
+  font-size: 50px !important;
+}
+
+.slick-prev {
+  left: -45px !important;
+}
+
+.slick-next {
+  right: -20px !important;
+}
+
+/* Tablet devices (768px and below) */
+@media (max-width: 768px) {
+  .slick-prev:before, 
+  .slick-next:before {
+    font-size: 40px !important;
+  }
+  
+  .slick-prev {
+    left: -35px !important;
+  }
+  
+  .slick-next {
+    right: -15px !important;
+  }
+}
+
+/* Mobile devices (576px and below) */
+@media (max-width: 576px) {
+  .slick-prev:before, 
+  .slick-next:before {
+    font-size: 30px !important;
+  }
+  
+  .slick-prev {
+    left: -25px !important;
+  }
+  
+  .slick-next {
+    right: -10px !important;
+  }
+}
+
+/* Very small mobile devices (400px and below) */
+@media (max-width: 400px) {
+  .slick-prev:before, 
+  .slick-next:before {
+    font-size: 24px !important;
+  }
+  
+  .slick-prev {
+    left: -15px !important;
+  }
+  
+  .slick-next {
+    right: -5px !important;
+  }
+}
