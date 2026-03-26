@@ -137,7 +137,9 @@ html{scroll-behavior:smooth}
 :root{
   --bg:#050d1a; --bg2:#07111f; --bg3:#091628;
   --border:rgba(14,165,233,.12); --border2:rgba(14,165,233,.28);
-  --ink:#e2f0ff; --ink2:#a8c8e0; --muted:#5a80a0;
+  --ink:#ffffff; /* Changed from #e2f0ff to pure white */
+  --ink2:#ffffff; /* Changed from #a8c8e0 to pure white */
+  --muted:rgba(255,255,255,0.65); /* Changed from #5a80a0 to white with opacity */
   --accent:#0ea5e9; --cyan:#06b6d4; --neon:#22d3ee; --green:#34d399;
   --sh:0 4px 32px rgba(14,165,233,.12); --sh2:0 8px 56px rgba(14,165,233,.2);
 }
@@ -823,7 +825,7 @@ export default function Portfolio() {
               {DATA.stats.map((s, i) => (
                 <div className="stat" key={i} onMouseEnter={hi} onMouseLeave={ho}>
                   <div className="stat-val">{s.val}</div>
-                  <div className="stat-lbl">{s.label}</div>
+                  <div className="stat-lbl ">{s.label}</div>
                 </div>
               ))}
             </div>
